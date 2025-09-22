@@ -10,6 +10,10 @@ from google.adk.models.lite_llm import LiteLlm
 from google.adk.tools import google_search
 from serpapi import GoogleSearch
 
+# main.py
+from fastapi import FastAPI
+from pydantic import BaseModel
+
 
 serp_api_key = os.getenv("SERP_API_KEY")
 
@@ -294,3 +298,14 @@ runner = Runner(
     app_name="Help Desk Agent",   # Associates runs with our app
     session_service=session_service # Uses our session manager
 )
+
+# app = FastAPI()
+
+# class AgentRunRequest(BaseModel):
+#     input: str
+
+# @app.post("/run_agent")
+# async def run_agent(request: AgentRunRequest):
+#     response = await root_agent.run(request.input)  # Assuming your agent has an async 'run' method
+#     return {"response": response}
+
